@@ -1,0 +1,38 @@
+name: 'Docker Release Tags action'
+description: 'Generates docker image tags base on the version provided'
+inputs:
+  image:
+    description: 'Specifies the docker image (incl. registry)'
+    required: true
+  tags-latest:
+    description: 'Specifies whether to create the latest tags (:latest, :flavour)'
+    required: false
+    default: "true"
+  release-only:
+    description: 'Whether to consider the latest version to be in only in GH Releases (excluding tags)'
+    required: false
+    default: "true"
+  flavour:
+    description: 'Specifies the image flavour (ex: onbuild, which is added to the tag)'
+    required: false
+    default: ""
+  updates:
+    description: 'Specifies depth of tag creation (minor/major)'
+    required: false
+    default: ""
+  token:
+    description: Personal access token (auto-populated). It is used only because anonymous requests are rate-limited. It can be overridden to an empty value.
+    default: ${{ github.token }}
+    required: false
+outputs:
+  images:
+    description: 'Full image tags to generated for docker build'
+  tags:
+    description: 'Tags to generated for docker build'
+  version:
+    description: 'Corresponds to the version of tag without v prefix and the release part'
+  runsOnTag:
+    description: 'Equals to true when action is run against tagged commit'
+runs:
+  using: 'node12'
+  main: 'index.js'
