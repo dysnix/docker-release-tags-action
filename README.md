@@ -1,4 +1,4 @@
-# Github action - Docker release tags list generator
+# Github action - Generate release tags for Docker Image
 
 This Action for [Docker](https://www.docker.com/) uses the Git tag to generate stable release tags for your Docker image. This tags list can be used for publishing for example with [docker/build-push-action](https://github.com/docker/build-push-action).
 
@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER}}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Get Docker Image tags
+        name: Generate release tags for Docker Image
         uses: ./.github/actions/docker-tags
         id: image
         with:
