@@ -129,8 +129,8 @@ async function run() {
     core.info(`Generated:  ${tags.join(' ')}`)
 
     core.setOutput("runsOnTag", refp[0] == 'tags')
-    core.setOutput("tags", tags.join(' '))
-    core.setOutput("images", tags.map(t => `${image}:${t}`).join(' '))
+    core.setOutput("tags", tags.join("\n"))
+    core.setOutput("images", tags.map(t => `${image}:${t}`).join("\n"))
 
     if (dt.nonsemver == "" && dt.tag.version != "") {
       core.setOutput("version", dt.nonsemver == "")
