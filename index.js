@@ -130,7 +130,7 @@ async function run() {
 
     core.setOutput("runsOnTag", refp[0] == 'tags')
     core.setOutput("tags", tags.join(' '))
-    core.setOutput("images", tags.map(t => `${image}:${t}`))
+    core.setOutput("images", tags.map(t => `${image}:${t}`).join(' '))
 
     if (dt.nonsemver == "" && dt.tag.version != "") {
       core.setOutput("version", dt.nonsemver == "")
