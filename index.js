@@ -133,7 +133,7 @@ async function run() {
     core.setOutput("images", tags.map(t => `${image}:${t}`).join("\n"))
 
     if (dt.nonsemver == "" && dt.tag.version != "") {
-      core.setOutput("version", dt.nonsemver == "")
+      core.setOutput("version", dt.tag.version)
     }
 
   } catch (error) {
